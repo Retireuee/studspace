@@ -1,0 +1,89 @@
+from tkinter import *
+from tkinter.ttk import Combobox
+from random import randint
+import time
+
+class gui:
+
+    def __init__(self):
+        self.root = Tk()
+        self.root.geometry("442x380")
+        self.lbl = Label(self.root, width=50, height=2, bg="grey", fg='black', font=15, text="0")
+
+        self.gg = ""
+        self.ll = []
+        self.entry = []
+        self.amount_elems = 1
+        self.btn_1 = Button(text="1", width=15, height=4, relief="solid", borderwidth=1)
+        self.btn_2 = Button(text="2", width=15, height=4, relief="solid", borderwidth=1)
+        self.btn_3 = Button(text="3", width=15, height=4, relief="solid", borderwidth=1)
+        self.btn_4 = Button(text="4", width=15, height=4, relief="solid", borderwidth=1)
+        self.btn_5 = Button(text="5", width=15, height=4, relief="solid", borderwidth=1)
+        self.btn_6 = Button(text="6", width=15, height=4, relief="solid", borderwidth=1)
+        self.btn_7 = Button(text="7", width=15, height=4, relief="solid", borderwidth=1)
+        self.btn_8 = Button(text="8", width=15, height=4, relief="solid", borderwidth=1)
+        self.btn_9 = Button(text="9", width=15, height=4, relief="solid", borderwidth=1)
+        self.btn_0 = Button(text="0", width=15, height=4, relief="solid", borderwidth=1)
+        self.btn_minus = Button(text="-", width=15, height=4, relief="solid", borderwidth=1)
+        self.btn_mnoj = Button(text="*", width=15, height=4, relief="solid", borderwidth=1)
+        self.btn_delen = Button(text="/", width=15, height=4, relief="solid", borderwidth=1)
+        self.btn_del = Button(text="<-", width=15, height=4, relief="solid", borderwidth=1)
+        self.btn_plus = Button(text="+", width=15, height=4, relief="solid", borderwidth=1)
+        self.btn_del_all = Button(text="C", width=15, height=4, relief="solid", borderwidth=1)
+        self.btn_equal = Button(text="=", width=62, height=4, relief="solid", borderwidth=1)
+        self.fill()
+
+    def fill(self):
+        self.lbl.place(x=0, y=0)
+        self.btn_1.place(x=0, y=246)
+        self.btn_2.place(x=110, y=246)
+        self.btn_3.place(x=220, y=246)
+        self.btn_4.place(x=0, y=178)
+        self.btn_5.place(x=110, y=178)
+        self.btn_6.place(x=220, y=178)
+        self.btn_7.place(x=0, y=110)
+        self.btn_8.place(x=110, y=110)
+        self.btn_9.place(x=220, y=110)
+        self.btn_0.place(x=110, y=42)
+        self.btn_minus.place(x=330, y=246)
+        self.btn_mnoj.place(x=330, y=178)
+        self.btn_delen.place(x=330, y=110)
+        self.btn_del.place(x=220, y=42)
+        self.btn_plus.place(x=330, y=42)
+        self.btn_del_all.place(x=-2, y=42)
+        self.btn_equal.place(x=0, y=314)
+
+    def write_btn(self, num):
+        if self.lbl_result.text() != "0":
+            if self.lbl_result.text()[-1] in "+-*/." and num in "+-*/.":
+                self.lbl_result.setText(self.lbl_result.text()[:-1] + num)
+            else:
+                self.lbl_result.setText(self.lbl_result.text() + num)
+        else:
+            if num not in "+-*/.":
+                self.lbl_result.setText(num)
+
+    def write_result(self, lbl):
+        if lbl[-1] != "0":
+            result = eval(lbl)
+            self.lbl_result.setText(str(result))
+        else:
+            self.del_all()
+
+    def del_num(self, lbl):
+        lbl_new = lbl[:-1]
+        if lbl_new != "":
+            self.lbl_result.setText(lbl_new)
+        else:
+            self.lbl_result.setText("0")
+
+    def del_all(self):
+        self.lbl_result.setText("0")
+
+
+
+
+
+
+a = gui()
+a.root.mainloop()
